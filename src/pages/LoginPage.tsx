@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
 
 const LoginPage = () => {
 
   // States
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
@@ -11,6 +12,15 @@ const LoginPage = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
+
+    const { login } = useAuth();
+
+    try {
+
+      await login({username, password});
+    } catch (err) {
+
+    }
   }
 
 
@@ -23,8 +33,8 @@ const LoginPage = () => {
           {error && <p className="error-message">{error}</p>}
 
           <div className="form-control">
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+            <label htmlFor="username">Username</label>
+            <input type="username" id="username" name="username" required value={username} onChange={(e) => setUsername(e.target.value)} />
           </div>
 
           <div className="form-control">
