@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
 
@@ -8,18 +9,24 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+
   // Functions
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
 
-    const { login } = useAuth();
 
     try {
 
-      await login({username, password});
-    } catch (err) {
+      await login({ username, password });
+      navigate('/');
 
+    } catch (err) {
+      setError("Failed to login. Control username and password");
     }
   }
 
@@ -30,7 +37,7 @@ const LoginPage = () => {
       <div className="auth-form">
 
         <form onSubmit={handleSubmit}>
-          {error && <p className="error-message">{error}</p>}
+          {error && <p className="error">{error}</p>}
 
           <div className="form-control">
             <label htmlFor="username">Username</label>
