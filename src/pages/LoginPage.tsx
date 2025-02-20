@@ -8,7 +8,7 @@ const LoginPage = () => {
   const [error, setError] = useState('');
 
   // Functions
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
   }
