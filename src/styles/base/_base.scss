@@ -1,5 +1,17 @@
 @use "./../abstracts/variables";
 
 body {
+    height: 100dvh;
+    background: url('login-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     background-color: variables.$bg-color;
 }
+
+// For screen width of 700px or more
+@media (min-width: 700px) {
+   body {
+    padding: 2em;
+   }
+  }
+  
