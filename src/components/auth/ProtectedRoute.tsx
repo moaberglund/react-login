@@ -9,7 +9,7 @@ interface ProtectedRouteProps {
 const ProtectedRoute = ({children}: ProtectedRouteProps) => {
 
     // Get user from context
-    const {user} = useAuth();
+    const {user } = useAuth();
 
     // Redirect to login if user is not logged in
     if (!user) {

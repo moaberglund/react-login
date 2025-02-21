@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import { User, LoginCredentials, RegisterCredentials, AuthResponse, AuthContextType } from '../types/auth.types';
 
 // Create context
@@ -84,6 +84,42 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         localStorage.removeItem('token');
         setUser(null);
     }
+
+    const checkToken = async () => {
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+            return;
+        }
+
+        try {
+            const res = await fetch('https://user-api-vnhj.onrender.com/user/validate', {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + token
+                }
+            });
+
+            const data = await res.json();
+            console.log("Token validation response:", data);
+
+            if (res.ok) {
+                setUser(data.user);
+            } else {
+                localStorage.removeItem('token');
+                setUser(null);
+            }
+
+        } catch (err) {
+            localStorage.removeItem('token');
+            setUser(null);
+        }
+    }
+
+    useEffect(() => {
+        checkToken();
+    }, []);
+    
 
     return (
         <AuthContext.Provider value={{ user, register, login, logout }}>
