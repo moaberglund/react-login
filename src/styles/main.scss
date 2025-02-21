@@ -6,7 +6,8 @@
 
 @use 'components/button';
 @use 'components/form';
-@use 'components/loginnavigation';
+@use 'components/login-navigation';
 
-@use 'layouts/login';
+@use 'layouts/login-layout';
+@use 'layouts/main-layout';
 
