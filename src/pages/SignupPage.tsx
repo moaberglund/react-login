@@ -27,7 +27,7 @@ const SignupPage = () => {
   }
 
   return (
-    <div className="login-layout">
+    <div>
 
       <h1 className="signup">Create Account</h1>
 

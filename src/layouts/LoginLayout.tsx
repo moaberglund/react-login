@@ -7,7 +7,7 @@ const LoginLayout = () => {
     <>
     <LoginNavigation />
 
-    <main>
+    <main className="login-layout">
         <Outlet />
     </main>
     

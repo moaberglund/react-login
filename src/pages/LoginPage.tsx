@@ -39,7 +39,7 @@ const LoginPage = () => {
 
 
   return (
-    <div className="login-layout">
+    <div>
       <h1 className="login">Welcome Back</h1>
 
       <div className="auth-form">
