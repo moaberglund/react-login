@@ -29,7 +29,7 @@ const SignupPage = () => {
   return (
     <div className="login-layout">
 
-      <h1 className="signup">Sign up</h1>
+      <h1 className="signup">Create Account</h1>
 
       <div className="auth-form">
 
