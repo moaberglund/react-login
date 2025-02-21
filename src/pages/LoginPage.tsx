@@ -39,39 +39,39 @@ const LoginPage = () => {
 
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="login-layout">
+      <h1 className="login">Welcome Back</h1>
+
       <div className="auth-form">
 
         <form onSubmit={handleSubmit}>
           {error && <p className="error">{error}</p>}
 
-          <div className="form-control">
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              required
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              disabled={isLoading} />
-          </div>
 
-          <div className="form-control">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              disabled={isLoading} />
-          </div>
+          <input
+            aria-label="username"
+            type="text"
+            id="username"
+            name="username"
+            required
+            value={username}
+            placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
+            disabled={isLoading} />
+
+          <input
+            aria-label="password"
+            type="password"
+            id="password"
+            name="password"
+            required
+            value={password}
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            disabled={isLoading} />
 
           <button
-            className="btn submit-btn"
+            className="btn login-btn"
             type="submit"
             disabled={isLoading}>
             {isLoading ? 'Logging in...' : 'Login'}
