@@ -23,3 +23,10 @@
     color: variables.$blue;
   }
 }
+
+// For screen width of 700px or more
+@media (min-width: 700px) {
+  .login-layout {
+    max-width: 500px;
+  }
+}
