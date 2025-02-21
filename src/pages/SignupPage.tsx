@@ -27,26 +27,35 @@ const SignupPage = () => {
   }
 
   return (
-    <div>
+    <div className="login-layout">
 
-      <h1>Sign up</h1>
+      <h1 className="signup">Sign up</h1>
 
       <div className="auth-form">
 
         <form onSubmit={handleSubmit}>
           {error && <p className="error">{error}</p>}
 
-          <div className="form-control">
-            <label htmlFor="username">Username</label>
-            <input type="username" id="username" name="username" required value={username} onChange={(e) => setUsername(e.target.value)} />
-          </div>
+          <input 
+          aria-label="username"
+          type="username" 
+          id="username" 
+          name="username" 
+          required value={username} 
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username" />
 
-          <div className="form-control">
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
-          </div>
+          <input 
+          aria-label="password"
+          type="password" 
+          id="password" 
+          name="password" 
+          required value={password} 
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password" />
 
-          <button className="btn submit-btn" type="submit">Sign up</button>
+
+          <button className="btn signin-btn" type="submit">Sign up</button>
 
         </form>
       </div>
