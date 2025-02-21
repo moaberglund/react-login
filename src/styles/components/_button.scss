@@ -1,0 +1,23 @@
+@use './../abstracts/variables';
+
+button {
+    padding: 0.8em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.login-btn {
+    margin-top: 1em;
+    background-color: variables.$orange;
+    color: white;
+}
+
+.signin-btn {
+    width: 180px;
+    margin-top: 1em;
+    background-color: variables.$blue;
+    color: white;
+}
