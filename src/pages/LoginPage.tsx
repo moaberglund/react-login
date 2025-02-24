@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -11,9 +11,14 @@ const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
 
-  const { login } = useAuth();
+  const { login, user } = useAuth();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if(user) {
+      navigate("/");
+    }
+  }, [user])
 
   // Functions
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
