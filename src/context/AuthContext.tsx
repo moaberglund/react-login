@@ -13,6 +13,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     // States
     const [user, setUser] = useState<User | null>(null);
+    const [loading, setLoading] = useState(true);
 
     // Functions
     const register = async (credentials: RegisterCredentials) => {
@@ -89,30 +90,32 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         const token = localStorage.getItem('token');
 
         if (!token) {
+            setLoading(false);
             return;
         }
 
         try {
+
+            setLoading(true);
+
             const res = await fetch('https://user-api-vnhj.onrender.com/user/validate', {
+                method: "GET",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": "Bearer " + token
                 }
             });
 
-            const data = await res.json();
-            console.log("Token validation response:", data);
-
             if (res.ok) {
+                const data = await res.json();
                 setUser(data.user);
-            } else {
-                localStorage.removeItem('token');
-                setUser(null);
             }
 
         } catch (err) {
             localStorage.removeItem('token');
             setUser(null);
+        }finally {
+            setLoading(false);
         }
     }
 
@@ -122,7 +125,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     
 
     return (
-        <AuthContext.Provider value={{ user, register, login, logout }}>
+        <AuthContext.Provider value={{ user, register, login, logout, loading }}>
             {children}
         </AuthContext.Provider>
     )
