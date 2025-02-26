@@ -17,7 +17,7 @@ const ProtectedRoute = ({children}: ProtectedRouteProps) => {
 
     // Redirect to login if user is not logged in
     if (!user) {
-        return <Navigate to="/login"  />
+        return <Navigate to="/login" replace />
     }
 
     return (
