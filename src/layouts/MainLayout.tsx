@@ -1,6 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext";
 import { useEffect } from "react";
+import MainNavigation from "../components/MainNavigation";
 
 
 const MainLayout = () => {
@@ -16,7 +17,8 @@ const MainLayout = () => {
 
   return (
     <>
-      <h1>Future navigation</h1>
+     <MainNavigation />
+     
       <main className="main-layout">
         <Outlet />
       </main>
