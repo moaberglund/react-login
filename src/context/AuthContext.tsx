@@ -20,7 +20,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
         try {
             // Make API call
-            const res = await fetch('https://user-api-vnhj.onrender.com/user/register', {
+            const res = await fetch('https://protectednotes-api.onrender.com/user/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const login = async (credentials: LoginCredentials) => {
         try {
             // First login request
-            const loginRes = await fetch('https://user-api-vnhj.onrender.com/user/login', {
+            const loginRes = await fetch('https://protectednotes-api.onrender.com/user/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             localStorage.setItem('token', token);
 
             // Now fetch user data using the token
-            const userRes = await fetch('https://user-api-vnhj.onrender.com/user/profile', {
+            const userRes = await fetch('https://protectednotes-api.onrender.com/user/profile', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -98,7 +98,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
             setLoading(true);
 
-            const res = await fetch('https://user-api-vnhj.onrender.com/user/validate', {
+            const res = await fetch('https://protectednotes-api.onrender.com/user/validate', {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
