@@ -48,7 +48,7 @@ const NotePage = () => {
                     <div key={note._id} className="note">
                         <h2>{note.title}</h2>
                         <p>{note.text}</p>
-                        <p><Link to={`/notes/${note._id}`}>{note.title}</Link></p>      
+                        <p><Link to={`/notes/${note._id}`}>To note</Link></p>      
                     </div>
                 ))}
 
