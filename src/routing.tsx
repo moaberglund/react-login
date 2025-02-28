@@ -6,7 +6,8 @@ import MainLayout from "./layouts/MainLayout";
 import LandingPage from "./pages/LandingPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { authLoader } from "./components/auth/authLoader";
-import NotePage from "./pages/NotePage";
+import NotePage from "./pages/notes/NotePage";
+import NoteDetailPage from "./pages/notes/[id]";
 
 
 export const router = createBrowserRouter([
@@ -35,6 +36,14 @@ export const router = createBrowserRouter([
                     <ProtectedRoute>
                         <NotePage />
                     </ProtectedRoute>)
+            },
+            {
+                path: ":id",
+                element: (
+                    <ProtectedRoute>
+                        <NoteDetailPage />
+                    </ProtectedRoute>
+                )
             }
         ]
     },
