@@ -6,7 +6,7 @@ const MainNavigation = () => {
     <nav className="main-navigation">
         <ul>
             <li><NavLink to="/">Home</NavLink></li>
-            
+            <li><NavLink to="/notes">Notes</NavLink></li>            
             
         </ul>
     </nav>
