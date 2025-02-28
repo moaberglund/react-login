@@ -1,0 +1,25 @@
+@use "./../abstracts/variables";
+
+.note {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 5px solid black;
+    background-color: variables.$peach;
+
+    border-radius: 0.25rem;
+    box-shadow: 0 0 10px rgba(black, 0.1);
+
+    p{
+        
+        a{
+            background-color: variables.$bluegray;
+            padding: 0.5em;
+            border: 1px solid variables.$purple;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            color: black;
+            font-weight: 700;
+           
+        }
+    }
+}
