@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { NoteData } from "../../interfaces/NoteData";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const NotePage = () => {
 
@@ -48,7 +48,7 @@ const NotePage = () => {
                     <div key={note._id} className="note">
                         <h2>{note.title}</h2>
                         <p>{note.text}</p>
-                        <p><Link to={`/notes/${note._id}`}>To note</Link></p>      
+                        <p><NavLink to={`/notes/${note._id}`}>To note</NavLink></p>      
                     </div>
                 ))}
 
