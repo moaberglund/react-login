@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { FaChevronLeft } from "react-icons/fa6";
 
 const CreateNotePage = () => {
   const navigate = useNavigate();
@@ -42,18 +43,29 @@ const CreateNotePage = () => {
       <h1>Create a New Note</h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Title:</label>
-          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
-        </div>
-        <div>
-          <label>Text:</label>
-          <textarea value={text} onChange={(e) => setText(e.target.value)} required />
-        </div>
-        <button type="submit" disabled={loading}>
+
+
+        <input
+          aria-label="titleinput"
+          placeholder="Title"
+          type="text"
+          value={title} onChange={(e) => setTitle(e.target.value)}
+          required />
+
+
+        <textarea
+          aria-label="textinput"
+          placeholder="Write your note here..."
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          required />
+
+        <button style={{ marginTop: '2em' }} type="submit" disabled={loading}>
           {loading ? "Creating..." : "Create Note"}
         </button>
       </form>
+
+      <NavLink to="/notes"><button style={{ marginTop: '4em' }}><FaChevronLeft /> Back to notes</button></NavLink>
     </div>
   );
 };
