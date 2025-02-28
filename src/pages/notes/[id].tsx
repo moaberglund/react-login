@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 
 const NoteDetailPage = () => {
   const { id } = useParams<{ id: string }>();  // Hämtar id från URL
@@ -24,6 +24,7 @@ const NoteDetailPage = () => {
     <div>
       <h1>{note.title}</h1>
       <p>{note.text}</p>
+        <NavLink to="/notes">Back to notes</NavLink>
     </div>
   );
 };
