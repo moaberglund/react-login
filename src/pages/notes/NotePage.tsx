@@ -48,12 +48,17 @@ const NotePage = () => {
                     <div key={note._id} className="note">
                         <h2>{note.title}</h2>
                         <p>{note.text}</p>
-                        <p><NavLink to={`/notes/${note._id}`}>To note</NavLink></p>      
+                        <p><NavLink to={`/notes/${note._id}`}>To note</NavLink></p>
                     </div>
                 ))}
 
             </div>
-            
+
+
+            <NavLink to="/notes/create">
+                <button>Create New Note</button>
+            </NavLink>
+
         </div>
     );
 };
