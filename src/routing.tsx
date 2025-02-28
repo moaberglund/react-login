@@ -6,6 +6,7 @@ import MainLayout from "./layouts/MainLayout";
 import LandingPage from "./pages/LandingPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { authLoader } from "./components/auth/authLoader";
+import NotePage from "./pages/NotePage";
 
 
 export const router = createBrowserRouter([
@@ -19,6 +20,20 @@ export const router = createBrowserRouter([
                 element: (
                     <ProtectedRoute>
                         <LandingPage />
+                    </ProtectedRoute>)
+            }
+        ]
+    },
+    {
+        path: "/notes",
+        element: <MainLayout />,
+        loader: authLoader,
+        children: [
+            {
+                index: true,
+                element: (
+                    <ProtectedRoute>
+                        <NotePage />
                     </ProtectedRoute>)
             }
         ]
