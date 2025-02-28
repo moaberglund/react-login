@@ -1,6 +1,6 @@
 @use "./../abstracts/variables";
 
-.login-navigation, .main-navigation {
+.login-navigation {
   background-color: variables.$orange;
   max-width: 400px;
   margin: 0 auto;
@@ -38,9 +38,31 @@
   }
 }
 
+.main-navigation {
+  @extend .login-navigation;
+  ul {
+    li {
+      .active {
+        background-color: variables.$bg-color-light;
+      }
+    }
+
+    .logout {
+      padding: 1em;
+      padding-top: 1.5em;
+      margin-right: 1em;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
 // For screen width of 700px or more
 @media (min-width: 700px) {
-  .login-navigation {
+  .login-navigation,
+  .main-navigation {
     max-width: 500px;
     ul li a {
       padding: 0.7em 3em;

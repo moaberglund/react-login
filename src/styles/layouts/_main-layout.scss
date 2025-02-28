@@ -1,5 +1,14 @@
+@use "./../abstracts/variables";
+
 .main-layout {
     padding: 1em;
-    background-color: white;
+    background-color: variables.$bg-color-light;
     line-height: 2em;
 }
+
+// For screen width of 700px or more
+@media (min-width: 700px) {
+    .main-layout {
+      max-width: 500px;
+    }
+  }
