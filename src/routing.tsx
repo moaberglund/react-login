@@ -9,6 +9,7 @@ import { authLoader } from "./components/auth/authLoader";
 import NotePage from "./pages/notes/NotePage";
 import NoteDetailPage from "./pages/notes/[id]";
 import CreateNotePage from "./pages/notes/create";
+import EditNotePage from "./pages/notes/edit";
 
 
 export const router = createBrowserRouter([
@@ -54,7 +55,14 @@ export const router = createBrowserRouter([
                     </ProtectedRoute>
                 )
             },
-
+            {
+                path: ":id/edit",
+                element: (
+                    <ProtectedRoute>
+                        <EditNotePage />
+                    </ProtectedRoute>
+                )
+            }
             
         ]
     },
