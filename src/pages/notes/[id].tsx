@@ -67,16 +67,17 @@ const NoteDetailPage = () => {
 
   return (
     <div>
-      <div className='note'>
+      <div style={{ marginTop: '2em', marginBottom: '2em' }} className='note'>
         <h1>{note.title}</h1>
         <p>{note.text}</p>
 
-        <div onClick={() => navigate(`/notes/${id}/edit`)}><FaPen /></div>
-
-        <div onClick={handleDelete}><FaTrash /></div>
+        <div style={{ display: 'flex', gap: '5em', marginTop: '2em' }}>
+          <button onClick={() => navigate(`/notes/${id}/edit`)}> <FaPen /> </button>
+          <button onClick={handleDelete}><FaTrash /></button>
+        </div>
       </div>
 
-      <NavLink to="/notes"><FaChevronLeft /> Back to notes</NavLink>
+      <NavLink to="/notes"><button><FaChevronLeft /> Back to notes</button></NavLink>
 
     </div>
   );
