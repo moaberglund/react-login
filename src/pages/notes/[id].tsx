@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 
 const NoteDetailPage = () => {
-  const { id } = useParams<{ id: string }>();  // Hämtar id från URL
-  const [note, setNote] = useState<any | null>(null);  // Du kan använda en riktig typ här för "note"
+  const { id } = useParams<{ id: string }>(); 
+  const [note, setNote] = useState<any | null>(null);  
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (id) {
@@ -13,12 +14,28 @@ const NoteDetailPage = () => {
   }, [id]);
 
   const fetchNote = async (id: string) => {
-    const resp = await fetch(`https://protectednotes-api.onrender.com/note/${id}`);
-    const data = await resp.json();
-    setNote(data);
-  };
 
-  if (!note) return <p>Loading...</p>;
+    try {
+
+        setLoading(true);
+
+        const resp = await fetch(`https://protectednotes-api.onrender.com/note/${id}`);
+
+        if (!resp.ok) {
+            throw Error;
+        } else {
+            const data = await resp.json();
+            setNote(data);
+        }
+
+    } catch (err) {
+        console.error('Error fetching notes:', err);
+    } finally {
+        setLoading(false);
+    }
+}
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div>
