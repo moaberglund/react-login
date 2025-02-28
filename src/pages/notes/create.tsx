@@ -60,12 +60,12 @@ const CreateNotePage = () => {
           onChange={(e) => setText(e.target.value)}
           required />
 
-        <button style={{ marginTop: '2em' }} type="submit" disabled={loading}>
+        <button className="btn-create" style={{ marginTop: '2em' }} type="submit" disabled={loading}>
           {loading ? "Creating..." : "Create Note"}
         </button>
       </form>
 
-      <NavLink to="/notes"><button style={{ marginTop: '4em' }}><FaChevronLeft /> Back to notes</button></NavLink>
+      <NavLink to="/notes"><button className="btn-back" style={{ marginTop: '4em' }}><FaChevronLeft /> Back to notes</button></NavLink>
     </div>
   );
 };

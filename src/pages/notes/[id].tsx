@@ -77,7 +77,7 @@ const NoteDetailPage = () => {
         </div>
       </div>
 
-      <NavLink to="/notes"><button><FaChevronLeft /> Back to notes</button></NavLink>
+      <NavLink to="/notes"><button className='btn-back'><FaChevronLeft /> Back to notes</button></NavLink>
 
     </div>
   );

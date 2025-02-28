@@ -22,3 +22,11 @@ button {
     background-color: variables.$blue;
     color: white;
 }
+
+.btn-back {
+    @extend .login-btn;
+}
+
+.btn-create {
+    @extend .signin-btn;
+}
