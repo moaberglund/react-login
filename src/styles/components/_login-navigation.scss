@@ -1,6 +1,6 @@
 @use "./../abstracts/variables";
 
-.login-navigation {
+.login-navigation, .main-navigation {
   background-color: variables.$orange;
   max-width: 400px;
   margin: 0 auto;
