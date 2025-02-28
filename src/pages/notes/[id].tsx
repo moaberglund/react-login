@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useParams, useNavigate } from 'react-router-dom';
-import { FaTrash, FaChevronLeft } from "react-icons/fa6";
+import { FaTrash, FaChevronLeft, FaPen } from "react-icons/fa6";
 
 const NoteDetailPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -70,6 +70,8 @@ const NoteDetailPage = () => {
       <div className='note'>
         <h1>{note.title}</h1>
         <p>{note.text}</p>
+
+        <div onClick={() => navigate(`/notes/${id}/edit`)}><FaPen /></div>
 
         <div onClick={handleDelete}><FaTrash /></div>
       </div>
