@@ -5,6 +5,7 @@ body {
     background: url('login-background.png');
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     background-color: variables.$bg-color;
 }
 
@@ -15,3 +16,10 @@ body {
    }
   }
   
+
+  // for mobile devices
+  @supports (-webkit-touch-callout: none) {
+    body {
+        background-attachment: scroll;
+    }
+}
