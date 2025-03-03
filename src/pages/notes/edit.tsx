@@ -48,7 +48,7 @@ const EditNotePage = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(note),
       });
@@ -57,7 +57,7 @@ const EditNotePage = () => {
         throw new Error("Failed to update note");
       }
 
-      navigate(`/notes/${id}`); 
+      navigate(`/notes/${id}`);
     } catch (err) {
       console.error("Error updating note:", err);
       setError("Failed to update note.");
@@ -73,16 +73,16 @@ const EditNotePage = () => {
     <div>
       <h1>Edit Note</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          Title:
-          <input type="text" name="title" value={note.title} onChange={handleChange} required />
-        </label>
-        <label>
-          Text:
-          <textarea name="text" value={note.text} onChange={handleChange} required />
-        </label>
-        <button type="submit">Save Changes</button>
+
+        <input type="text" name="title" value={note.title} onChange={handleChange} required />
+
+        <textarea name="text" value={note.text} onChange={handleChange} required />
+
+        <button className="btn-create" style={{ marginTop: '2em' }} type="submit" disabled={loading}>
+          {loading ? "Saving..." : "Save changes"}
+        </button>
       </form>
+
       <button onClick={() => navigate(`/notes/${id}`)}>Cancel</button>
     </div>
   );
