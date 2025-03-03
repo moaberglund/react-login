@@ -9,6 +9,7 @@ const SignupPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const { register } = useAuth();
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const SignupPage = () => {
   // Functions
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     setError('');
 
     try {
@@ -23,6 +25,8 @@ const SignupPage = () => {
       navigate('/login');
     } catch (err) {
       setError("Failed to register. Control username and password");
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -36,26 +40,32 @@ const SignupPage = () => {
         <form onSubmit={handleSubmit}>
           {error && <p className="error">{error}</p>}
 
-          <input 
-          aria-label="username"
-          type="username" 
-          id="username" 
-          name="username" 
-          required value={username} 
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username" />
+          <input
+            aria-label="username"
+            type="username"
+            id="username"
+            name="username"
+            required value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Username"
+            disabled={isLoading} />
 
-          <input 
-          aria-label="password"
-          type="password" 
-          id="password" 
-          name="password" 
-          required value={password} 
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password" />
+          <input
+            aria-label="password"
+            type="password"
+            id="password"
+            name="password"
+            required value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            disabled={isLoading} />
 
-
-          <button className="btn signin-btn" type="submit">Sign up</button>
+          <button
+            className="btn signin-btn"
+            type="submit"
+            disabled={isLoading}>
+            {isLoading ? 'Signing up...' : 'Sign up'}
+          </button>
 
         </form>
       </div>
